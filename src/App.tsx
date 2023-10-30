@@ -1,12 +1,22 @@
 import { useState } from 'react'
 import './App.css'
 
+import LogoImg from './assets/logo.png'
+
 function App() {
-  const[username, setUsername] = useState("nare")
 
   return (
-    <div>
-      {username.length >= 5 && <h1>Username muito grande</h1>} {/*se o tamanho do usernam efor >= 5, mostrar o h1 */}
+    <div className='container'>
+      <img src={LogoImg} alt="logo frases"
+      className='logo' />
+
+      <h2 className='title'>Categorias</h2>
+      <section className='category-area'>
+        <button className='category-button'>Motivação</button>
+        <button className='category-button'>Bem estar</button>
+      </section>
+      <button className='button-frase'>Gerar frase</button>
+      <p className='textoFrase'>Alguma frase vai vir aqui</p>
           
     </div>
   )
