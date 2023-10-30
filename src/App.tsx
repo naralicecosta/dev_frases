@@ -30,8 +30,22 @@ function App() {
         'Desejo a todos um dia iluminado!',
         'Bom dia para você que acordou com a certeza de que dias melhores virão!',
       ]
+    },
+    {
+      id:3,
+      nome: "boa noite",
+      frases:[
+        'teste',
+      ]
     }
   ]
+  function handleSwitchCategory(index: number ){
+    setCategoriaSelecionada(index);
+    }
+  function gerarFrase(){
+    let numeroAlteatorio = Math.floor(Math.random()* allFrases[categoriaSelecionada].frases.length) //gerando um número aletarorio com base no numero de frases
+    setTextoFrase(`"${allFrases[categoriaSelecionada].frases[numeroAlteatorio]}"`) // frase como uma citação
+  }
 
   return (
     <div className='container'>
@@ -42,13 +56,18 @@ function App() {
       <section className='category-area'>
         {allFrases.map((item, index) =>  (// map para percorrer os items
           <button
-          key={item.id}
-           className='category-button'>
+            key={item.id}
+            className='category-button'
+            style={{
+              borderWidth: item.nome === allFrases[categoriaSelecionada].nome  ? 2 : 0,
+              borderColor: '#1fa4db'
+            }}
+            onClick={() => handleSwitchCategory(index)}>
             {item.nome}
             </button>
         ))}
       </section>
-      <button className='button-frase'>Gerar frase</button>
+      <button className='button-frase' onClick={gerarFrase}>Gerar frase</button>
       <p className='textoFrase'>
         {textoFrase !== '' && <p className='textoFrase'>{textoFrase}</p>}
       </p>
